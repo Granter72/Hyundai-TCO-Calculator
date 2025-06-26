@@ -1,10 +1,8 @@
-    ```json
+{
+  "rewrites": [
     {
-      "rewrites": [
-        {
-          "source": "/(.*)",
-          "destination": "/api/auth"
-        }
-      ]
+      "source": "/(.*)",
+      "destination": "/api/auth"
     }
-    ```
+  ]
+}
