@@ -1,0 +1,251 @@
+
+<div class="progress-bar">
+  <div id="progress" class="progress" style="width: 25%"></div>
+</div>
+
+<div class="flex mb-6">
+  <div class="tab active" data-tab="vehicle-selection">1. Vehicle Selection</div>
+  <div class="tab" data-tab="usage-details">2. Usage Details</div>
+  <div class="tab" data-tab="financing">3. Financing</div>
+  <div class="tab" data-tab="results">4. Results</div>
+</div>
+
+<!-- Vehicle Selection Tab -->
+<div id="vehicle-selection" class="tab-content active">
+  <h2>Select Your Hyundai Model</h2>
+  <p class="mb-4">Choose the Hyundai model you're interested in to calculate its total cost of ownership.</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="model-card" data-model="i10" data-price="209900">
+      <h3>Hyundai i10</h3>
+      <p>Starting from R209,900</p>
+      <p class="text-sm text-gray-600">Fuel Economy: 5.0 L/100km</p>
+      <div class="flex justify-between mt-2">
+        <span class="text-sm">Hatchback</span>
+        <span class="text-sm hyundai-blue">Select →</span>
+      </div>
+    </div>
+    
+    <div class="model-card" data-model="i20" data-price="269900">
+      <h3>Hyundai i20</h3>
+      <p>Starting from R269,900</p>
+      <p class="text-sm text-gray-600">Fuel Economy: 5.4 L/100km</p>
+      <div class="flex justify-between mt-2">
+        <span class="text-sm">Hatchback</span>
+        <span class="text-sm hyundai-blue">Select →</span>
+      </div>
+    </div>
+    
+    <div class="model-card" data-model="tucson" data-price="519900">
+      <h3>Hyundai Tucson</h3>
+      <p>Starting from R519,900</p>
+      <p class="text-sm text-gray-600">Fuel Economy: 7.9 L/100km</p>
+      <div class="flex justify-between mt-2">
+        <span class="text-sm">SUV</span>
+        <span class="text-sm hyundai-blue">Select →</span>
+      </div>
+    </div>
+    
+    <div class="model-card" data-model="creta" data-price="459900">
+      <h3>Hyundai Creta</h3>
+      <p>Starting from R459,900</p>
+      <p class="text-sm text-gray-600">Fuel Economy: 6.5 L/100km</p>
+      <div class="flex justify-between mt-2">
+        <span class="text-sm">SUV</span>
+        <span class="text-sm hyundai-blue">Select →</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-6 text-right">
+    <button id="next-to-usage" class="btn" disabled>Next: Usage Details</button>
+  </div>
+</div>
+
+<!-- Usage Details Tab -->
+<div id="usage-details" class="tab-content">
+  <h2>Vehicle Usage Details</h2>
+  <p class="mb-4">Tell us how you plan to use your vehicle to get an accurate cost estimate.</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block mb-2 font-medium">Annual Kilometers</label>
+      <div class="flex items-center">
+        <input type="range" id="annual-km-slider" min="5000" max="50000" step="1000" value="20000" class="w-full mr-4">
+        <span id="annual-km-value" class="w-20 text-right">20,000</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Average in South Africa: 20,000 km/year</p>
+    </div>
+    
+    <div>
+      <label class="block mb-2 font-medium">Ownership Period (Years)</label>
+      <div class="flex items-center">
+        <input type="range" id="ownership-years-slider" min="1" max="10" step="1" value="5" class="w-full mr-4">
+        <span id="ownership-years-value" class="w-20 text-right">5</span>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">Recommended: 5-7 years</p>
+    </div>
+    
+    <div>
+      <label class="block mb-2 font-medium">Fuel Price (R/liter)</label>
+      <input type="number" id="fuel-price" class="input-field" value="23.46" step="0.01" min="10">
+      <p class="text-xs text-gray-500 mt-1">Current average petrol price in South Africa</p>
+    </div>
+    
+    <div>
+      <label class="block mb-2 font-medium">Driving Conditions</label>
+      <select id="driving-conditions" class="input-field">
+        <option value="mostly-city">Mostly City (Heavy Traffic)</option>
+        <option value="mixed" selected>Mixed City/Highway</option>
+        <option value="mostly-highway">Mostly Highway</option>
+      </select>
+      <p class="text-xs text-gray-500 mt-1">Affects fuel consumption estimates</p>
+    </div>
+  </div>
+  
+  <div class="mt-8">
+    <h3>Maintenance Preferences</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+      <div>
+        <label class="block mb-2 font-medium">Service Plan</label>
+        <select id="service-plan" class="input-field">
+          <option value="standard">Standard (Included)</option>
+          <option value="extended">Extended Service Plan (+R15,000)</option>
+        </select>
+      </div>
+      
+      <div>
+        <label class="block mb-2 font-medium">Maintenance Plan</label>
+        <select id="maintenance-plan" class="input-field">
+          <option value="none">None</option>
+          <option value="basic">Basic Maintenance Plan (+R25,000)</option>
+          <option value="comprehensive">Comprehensive Maintenance Plan (+R40,000)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-6 flex justify-between">
+    <button id="back-to-vehicle" class="btn btn-secondary">Back: Vehicle Selection</button>
+    <button id="next-to-financing" class="btn">Next: Financing</button>
+  </div>
+</div>
+
+<!-- Financing Tab -->
+<div id="financing" class="tab-content">
+  <h2>Financing Options</h2>
+  <p class="mb-4">Configure your financing preferences to calculate monthly payments and total costs.</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block mb-2 font-medium">Purchase Method</label>
+      <select id="purchase-method" class="input-field">
+        <option value="cash">Cash Purchase</option>
+        <option value="finance" selected>Vehicle Finance</option>
+      </select>
+    </div>
+    
+    <div id="deposit-container">
+      <label class="block mb-2 font-medium">Deposit Amount (R)</label>
+      <input type="number" id="deposit-amount" class="input-field" value="50000" min="0">
+      <p class="text-xs text-gray-500 mt-1">Recommended: 10-20% of vehicle price</p>
+    </div>
+    
+    <div id="finance-term-container">
+      <label class="block mb-2 font-medium">Finance Term (Months)</label>
+      <select id="finance-term" class="input-field">
+        <option value="36">36 months (3 years)</option>
+        <option value="48">48 months (4 years)</option>
+        <option value="60" selected>60 months (5 years)</option>
+        <option value="72">72 months (6 years)</option>
+      </select>
+    </div>
+    
+    <div id="interest-rate-container">
+      <label class="block mb-2 font-medium">Interest Rate (%)</label>
+      <input type="number" id="interest-rate" class="input-field" value="11.75" step="0.25" min="0" max="30">
+      <p class="text-xs text-gray-500 mt-1">Current prime rate: 11.75%</p>
+    </div>
+  </div>
+  
+  <div class="mt-8">
+    <h3>Insurance & Additional Costs</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+      <div>
+        <label class="block mb-2 font-medium">Monthly Insurance Estimate (R)</label>
+        <input type="number" id="insurance-monthly" class="input-field" value="1200" min="0">
+        <p class="text-xs text-gray-500 mt-1">Average comprehensive insurance cost</p>
+      </div>
+      
+      <div>
+        <label class="block mb-2 font-medium">Annual License & Registration (R)</label>
+        <input type="number" id="license-fee" class="input-field" value="800" min="0">
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-6 flex justify-between">
+    <button id="back-to-usage" class="btn btn-secondary">Back: Usage Details</button>
+    <button id="calculate-results" class="btn">Calculate Total Cost</button>
+  </div>
+</div>
+
+<!-- Results Tab -->
+<div id="results" class="tab-content">
+  <h2>Total Cost of Ownership Results</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="result-card text-center">
+      <h3 class="mb-2">Total Cost of Ownership</h3>
+      <p id="total-cost" class="text-3xl font-bold hyundai-blue">R0</p>
+      <p class="text-sm text-gray-600">Over <span id="result-years">5</span> years</p>
+    </div>
+    
+    <div class="result-card text-center">
+      <h3 class="mb-2">Monthly Cost</h3>
+      <p id="monthly-cost" class="text-3xl font-bold hyundai-light-blue">R0</p>
+      <p class="text-sm text-gray-600">Average per month</p>
+    </div>
+    
+    <div class="result-card text-center">
+      <h3 class="mb-2">Cost per Kilometer</h3>
+      <p id="cost-per-km" class="text-3xl font-bold hyundai-blue">R0.00</p>
+      <p class="text-sm text-gray-600">Lifetime average</p>
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <h3 class="mb-4">Cost Breakdown</h3>
+      <div class="chart-container">
+        <canvas id="costBreakdownChart"></canvas>
+      </div>
+    </div>
+    
+    <div>
+      <h3 class="mb-4">Detailed Cost Breakdown</h3>
+      <div id="cost-breakdown-details" class="p-4 bg-gray-50 rounded-lg">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-8">
+    <h3 class="mb-4">Vehicle Depreciation Over Time</h3>
+    <div class="chart-container">
+      <canvas id="depreciationChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+    <h3 class="mb-2">Recommendations</h3>
+    <ul id="recommendations" class="list-disc pl-5">
+      <!-- Will be populated by JavaScript -->
+    </ul>
+  </div>
+  
+  <div class="mt-6 flex justify-between">
+    <button id="back-to-financing" class="btn btn-secondary">Back: Financing</button>
+    <button id="start-over" class="btn">Start Over</button>
+  </div>
+</div>
