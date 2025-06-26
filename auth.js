@@ -1,5 +1,4 @@
- ```javascript
-    // api/auth.js
+// api/auth.js
 export default function handler(req, res) {
   const allowedDomain = "@hyundai.co.za"; // The domain you want to allow
   const sharedPassword = process.env.AUTH_PASSWORD; // The shared password set in Vercel
@@ -21,4 +20,3 @@ export default function handler(req, res) {
     res.end('<h1>Authentication Required</h1>');
   }
 }
- 
